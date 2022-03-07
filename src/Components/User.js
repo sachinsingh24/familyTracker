@@ -17,24 +17,28 @@ const User = () => {
   console.log(Member.username);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/headsignup/').then((res) => {
-      setHead((prev) => {
-        return {
-          ...prev,
-          username: res.data.map((username) => username.username),
-          password: res.data.map((password) => password.password),
-        };
+    axios
+      .get('https://familytracker-24.herokuapp.com/headsignup/')
+      .then((res) => {
+        setHead((prev) => {
+          return {
+            ...prev,
+            username: res.data.map((username) => username.username),
+            password: res.data.map((password) => password.password),
+          };
+        });
       });
-    });
-    axios.get('http://localhost:5000/membersignup/').then((res) => {
-      setMember((prev) => {
-        return {
-          ...prev,
-          username: res.data.map((username) => username.username),
-          password: res.data.map((password) => password.password),
-        };
+    axios
+      .get('https://familytracker-24.herokuapp.com/membersignup/')
+      .then((res) => {
+        setMember((prev) => {
+          return {
+            ...prev,
+            username: res.data.map((username) => username.username),
+            password: res.data.map((password) => password.password),
+          };
+        });
       });
-    });
   }, []);
 
   return (
